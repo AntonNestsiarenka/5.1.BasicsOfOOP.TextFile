@@ -1,4 +1,4 @@
-package by.java;
+package by.java.oop_1;
 
 import by.java.oop_1.bean.Directory;
 import by.java.oop_1.bean.TextFile;

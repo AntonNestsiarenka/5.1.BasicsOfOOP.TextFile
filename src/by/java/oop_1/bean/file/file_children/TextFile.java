@@ -1,4 +1,7 @@
-package by.java.oop_1.bean;
+package by.java.oop_1.bean.file.file_children;
+
+import by.java.oop_1.bean.directory.Directory;
+import by.java.oop_1.bean.file.File;
 
 public final class TextFile extends File<String> {
 

@@ -1,7 +1,7 @@
 package by.java.oop_1.logic;
 
-import by.java.oop_1.bean.Directory;
-import by.java.oop_1.bean.TextFile;
+import by.java.oop_1.bean.directory.Directory;
+import by.java.oop_1.bean.file.file_children.TextFile;
 
 public final class TextFileLogic extends FileLogic {
 

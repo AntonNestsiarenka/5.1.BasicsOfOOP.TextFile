@@ -1,4 +1,6 @@
-package by.java.oop_1.bean;
+package by.java.oop_1.bean.file;
+
+import by.java.oop_1.bean.directory.Directory;
 
 import java.util.Objects;
 

@@ -1,4 +1,6 @@
-package by.java.oop_1.bean;
+package by.java.oop_1.bean.directory;
+
+import by.java.oop_1.bean.file.File;
 
 import java.util.ArrayList;
 import java.util.Objects;

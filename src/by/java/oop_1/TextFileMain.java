@@ -1,7 +1,7 @@
 package by.java.oop_1;
 
-import by.java.oop_1.bean.Directory;
-import by.java.oop_1.bean.TextFile;
+import by.java.oop_1.bean.directory.Directory;
+import by.java.oop_1.bean.file.file_children.TextFile;
 import by.java.oop_1.logic.TextFileLogic;
 
 public class TextFileMain {

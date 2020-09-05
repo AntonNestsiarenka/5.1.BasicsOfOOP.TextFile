@@ -1,6 +1,6 @@
 package by.java.oop_1.logic;
 
-import by.java.oop_1.bean.Directory;
+import by.java.oop_1.bean.directory.Directory;
 
 public interface IFile {
 

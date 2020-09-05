@@ -1,7 +1,7 @@
 package by.java.oop_1.logic;
 
-import by.java.oop_1.bean.Directory;
-import by.java.oop_1.bean.File;
+import by.java.oop_1.bean.directory.Directory;
+import by.java.oop_1.bean.file.File;
 import by.java.oop_1.view.Viewer;
 
 public class FileLogic implements IFile {

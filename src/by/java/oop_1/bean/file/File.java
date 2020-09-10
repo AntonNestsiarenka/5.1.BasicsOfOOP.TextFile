@@ -55,10 +55,6 @@ public abstract class File<T> {
         return location;
     }
 
-    public String getFileInfo() {
-        return "Name of file: " + fileName + ", type: " + extension + ", location: " + location.getDirectoryName() + ".";
-    }
-
     @Override
     public String toString() {
         return "File{" +

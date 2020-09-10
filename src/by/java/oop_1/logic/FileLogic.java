@@ -7,15 +7,15 @@ import by.java.oop_1.view.Viewer;
 public class FileLogic implements IFile {
 
     @Override
-    public void renameFile(String fileName, Directory directory, String newName) {
+    public void renameFile(String fileName, Directory directory, DirectoryLogic directoryLogic, String newName) {
         /* Переименовывает файл заданным именем. Если такое имя уже есть в директории, то генерирует новое уникальное
            имя на основе заданного. */
-        File<?> fileFound = directory.getFileByName(fileName);
+        File<?> fileFound = directoryLogic.getFileByName(fileName, directory);
         if (fileFound != null)
         {
             String newFileName = newName;
-            if (isFileExist(newName, directory)) {
-                newFileName = generateNewName(newName, directory);
+            if (isFileExist(newName, directory, directoryLogic)) {
+                newFileName = generateNewName(newName, directory, directoryLogic);
             }
             fileFound.setFileName(newFileName);
         }
@@ -25,9 +25,9 @@ public class FileLogic implements IFile {
     }
 
     @Override
-    public void deleteFile(String fileName, Directory directory) {
+    public void deleteFile(String fileName, Directory directory, DirectoryLogic directoryLogic) {
         // Удаляет файл с заданным именем из директории.
-        File<?> fileFound = directory.getFileByName(fileName);
+        File<?> fileFound = directoryLogic.getFileByName(fileName, directory);
         if (fileFound != null)
         {
             directory.deleteFileFromDirectory(fileFound);
@@ -38,9 +38,9 @@ public class FileLogic implements IFile {
     }
 
     @Override
-    public void clearContentOfFile(String fileName, Directory directory) {
+    public void clearContentOfFile(String fileName, Directory directory, DirectoryLogic directoryLogic) {
         // Очищает содержимое файла.
-        File<?> fileFound = directory.getFileByName(fileName);
+        File<?> fileFound = directoryLogic.getFileByName(fileName, directory);
         if (fileFound != null)
         {
             fileFound.setContent(null);
@@ -51,9 +51,9 @@ public class FileLogic implements IFile {
     }
 
     @Override
-    public void displayFileContent(String fileName, Directory directory) {
+    public void displayFileContent(String fileName, Directory directory, DirectoryLogic directoryLogic) {
         // Базовая реализация отображения содержимого файла.
-        File<?> fileFound = directory.getFileByName(fileName);
+        File<?> fileFound = directoryLogic.getFileByName(fileName, directory);
         if (fileFound != null)
         {
             Viewer.printMessage((fileFound.getContent() == null) ? "" : fileFound.getContent().toString());
@@ -63,18 +63,24 @@ public class FileLogic implements IFile {
         }
     }
 
-    protected boolean isFileExist(String fileName, Directory directory)
+    @Override
+    public String getFileInfo(File<?> file) {
+
+        return "Name of file: " + file.getFileName() + ", type: " + file.getExtension() + ", location: " + file.getLocation().getDirectoryName() + ".";
+    }
+
+    protected boolean isFileExist(String fileName, Directory directory, DirectoryLogic directoryLogic)
     {
         // Проверяет существует ли файл с заданным именем в заданной директории.
-        File<?> fileFound = directory.getFileByName(fileName);
+        File<?> fileFound = directoryLogic.getFileByName(fileName, directory);
         return fileFound != null;
     }
 
-    protected String generateNewName(String fileName, Directory directory) {
+    protected String generateNewName(String fileName, Directory directory, DirectoryLogic directoryLogic) {
         // Генерирует новое уникальное имя файла на основе заданного.
         String newFileName = fileName + 1;
         int i = 2;
-        while (directory.getFileByName(newFileName) != null)
+        while (directoryLogic.getFileByName(newFileName, directory) != null)
         {
             newFileName = fileName + i;
             i++;

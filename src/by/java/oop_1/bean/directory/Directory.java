@@ -72,32 +72,6 @@ public final class Directory {
         files.clear();
     }
 
-    public File<?> getFileByName(String fileName)
-    {
-        // Возвращает файл если файл с заданным именем присутствует в директории либо null если нет.
-        File<?> fileFound = null;
-        for (File<?> file : files)
-        {
-            if (file.getFileName().equals(fileName))
-            {
-                fileFound = file;
-                break;
-            }
-        }
-        return fileFound;
-    }
-
-    public String getDirectoryInfo()
-    {
-        // Возвращает всю информацию о директории с файлами.
-        StringBuilder filesInfo = new StringBuilder();
-        for (File<?> file : files)
-        {
-            filesInfo.append(file.getFileInfo() + "\n");
-        }
-        return "Directory name: " + directoryName + "\n" + filesInfo.toString();
-    }
-
     @Override
     public String toString() {
         StringBuilder filesInfo = new StringBuilder();
